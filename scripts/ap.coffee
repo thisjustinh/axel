@@ -1,12 +1,28 @@
 module.exports = (robot) ->
 
-	robot.hear /fuck/i, (res) ->
-		res.send "That's a no-no word!"
+	robot.respond /help/i, (res) ->
+		res.send "Try typing \"axel, teach me about ______ in AP style\" and I'll help you out!"
+		res.send "If you're just starting out, I recommend learning about punctuation, dates, numbers, names and references first."
+		res.send "A full list of possible queries can be found if you ask \"axel, what can I ask?\""
+		res.send "If something doesn't work, feel free to yell at Justin."
+
+	robot.respond /what can I ask/i, (res) ->
+		res.send "Ask me about abbreviations, acronyms, addresses, ages, capitalization, dates, degrees, locations, measurements, money, names, numbers, Oxford commas, percentages, punctuation, references, time and titles!"
+		res.send "Type \"axel, teach me about ______ in AP style\" and put one of the words above in the blank."
+		res.send "If you feel really apathetic, just ask \"axel, teach me about something in AP style\" and I'll spit out a random fact."
 
 	robot.respond /teach me about (.*) in AP style/i, (res) ->
-		query = res.match[1]
+		query = ""
+
+		if res.match[1] is "something"
+			options = ["abbreviations", "acronyms", "addresses", "ages", "capitalization", "dates", "degrees", "locations", "measurements", "money", "names", "numbers", "Oxford commas", "percentages", "punctuation", "references", "time", "titles"]
+			query = res.random options
+			res.send "You spinned " + query + "."
+		else
+			query = res.match[1]
+
 		if query is "dates"
-			res.send "Dates should have abbrieviated months, then date as an Arabic figure, and then the year." +
+			res.send "Dates should have abbreviated months, then date as an Arabic figure, and then the year." +
 				"However, if you're only specifying the month without the day, you may write it out. Capitalize and write out days of the week" +
 				" Don't start sentences with dates!"
 			res.send "The abbreviations of months are Jan., Feb., Aug., Sept., Oct., Nov., and Dec."
@@ -78,7 +94,14 @@ module.exports = (robot) ->
 			res.send "Avoid semicolons (unless you have a complex series) and colons, as you'll become best friends with the em dash. Use hyphens—the en dash—for compound adjectives like twice-derived functions."
 			res.send "Add an apostrophe after possessives with plural nouns ending in s (students' grades), but singular nouns ending in s use apostrophe-s (class's grades). Singular names ending in s only add an apostrophe (Darius' axe). Plural letters get apostrophe-s (all A's on a report card)."
 			res.send "Avoid using parentheses and try to replace them with em dashes."
+		else if query is "money"
+			res.send "Money always stays in numeric form, where the number is preceded by a dollar sign, and you generally drop the cents unless you're going for a specific journalistic effect. I would have $20 in my wallet if robots had wallets."
+			res.send "For big sums, stick with the usual number rule but stick a dollar sign there. I wish a bank approved my small loan of $1 million dollars."
+			res.send "If all you've got in your pocket is change, though, don't use the dollar sign and instead spell out \"cents.\" Maybe 47 cents is in my couch."
 		else
-			res.send "Sorry, I don't know that. Try checking the stylebook or the AP Twitter feed."
+			res.send "Sorry, I don't know that. Try checking the stylebook or the AP Twitter feed. You'll be surprised by what you can learn."
 			return
-		res.send "I hope that answers your question!"
+
+		bye = ["I hope that answers your question!", "Feel free to ask me anything else!", "Hopefully that helps you out!", "Good luck!"]
+
+		res.send res.random bye
