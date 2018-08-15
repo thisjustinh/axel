@@ -1,3 +1,20 @@
+# Description:
+#   Patch Storyteller
+#
+#   Sends title, date published, and URL of the five most recent stories of any given category from the Tredyffrin/Easttown Patch
+#
+# Dependencies:
+#   cheerio
+#
+# Configuration:
+#   none
+#
+# Commands:
+#   show me the latest patch about (.*) - returns the five most recent stories for (.*) category
+#   patch help - displays possible categories
+#
+# Author:
+#   xinging-birds
 cheerio = require 'cheerio'
 
 module.exports = (robot) ->

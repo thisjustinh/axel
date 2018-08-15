@@ -1,3 +1,20 @@
+# Description:
+#   AP Style Helper
+#
+#   Simple text script with hard-coded responses
+#
+# Dependencies:
+#   none
+#
+# Configuration:
+#   none
+#
+# Commands:
+#   what can I ask - Returns list of possible queries to the script
+#   teach me about (.*) in AP style - Sends messages with AP style advice
+#
+# Author:
+#   xinging-birds
 module.exports = (robot) ->
 
 	robot.respond /help/i, (res) ->
