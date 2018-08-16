@@ -15,19 +15,16 @@
     "hubot-pugme": "^0.1.1",
     "hubot-redis-brain": "0.0.4",
     "hubot-rules": "^0.1.2",
-<<<<<<< HEAD
     "hubot-script-ical": "^1.0.0",
     "hubot-scripts": "^2.17.2",
     "hubot-shipit": "^0.2.1",
     "hubot-slack": "^4.5.3",
     "request": "^2.88.0",
     "rss-parser": "^3.4.2"
-=======
     "hubot-scripts": "^2.17.2",
     "hubot-shipit": "^0.2.1",
     "hubot-slack": "^4.5.3",
     "request": "^2.88.0"
->>>>>>> 10073cf949411607a9f60c10160b4239cfcd2335
   },
   "engines": {
     "node": "10.8.x"
